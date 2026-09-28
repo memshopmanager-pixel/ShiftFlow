@@ -34,11 +34,10 @@
       </header>
 
       <main class="content">
-        <!-- HOME PANEL -->
         <section class="panel active" id="home">
           <div class="calendar-container glass-card">
             <div class="calendar-nav">
-              <button class="nav-button" id="prevMonth" aria-label="Предыдущий месяц">
+              <button class="nav-button" id="prevMonth" type="button" aria-label="Предыдущий месяц">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
@@ -46,7 +45,7 @@
               <div class="month-year">
                 <h2 id="monthLabel">Сентябрь</h2>
               </div>
-              <button class="nav-button" id="nextMonth" aria-label="Следующий месяц">
+              <button class="nav-button" id="nextMonth" type="button" aria-label="Следующий месяц">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
@@ -77,7 +76,7 @@
               <div class="stat-item">
                 <span class="stat-icon">📊</span>
                 <div>
-                  <p class="stat-label">Количество смен</p>
+                  <p class="stat-label">Смены</p>
                   <strong id="monthShifts">0</strong>
                 </div>
               </div>
@@ -91,16 +90,15 @@
             </div>
           </div>
 
-          <button class="add-shift-btn" id="addShiftBtn">+ Добавить смену</button>
+          <button class="add-shift-btn" id="addShiftBtn" type="button">+ Добавить смену</button>
         </section>
 
-        <!-- REPORTS PANEL -->
         <section class="panel" id="reports">
           <div class="reports-header glass-card">
             <h2>Отчёты</h2>
             <div class="time-filter">
-              <button class="filter-btn active" data-filter="month">Месяц</button>
-              <button class="filter-btn" data-filter="year">Год</button>
+              <button class="filter-btn active" type="button" data-filter="month">Месяц</button>
+              <button class="filter-btn" type="button" data-filter="year">Год</button>
             </div>
           </div>
 
@@ -122,80 +120,26 @@
             </div>
           </div>
 
-          <div class="monthly-selector glass-card">
-            <label for="monthSelect">Выберите месяц:</label>
-            <select id="monthSelect">
-              <option value="0">Январь</option>
-              <option value="1">Февраль</option>
-              <option value="2">Март</option>
-              <option value="3">Апрель</option>
-              <option value="4">Май</option>
-              <option value="5">Июнь</option>
-              <option value="6">Июль</option>
-              <option value="7">Август</option>
-              <option value="8" selected>Сентябрь</option>
-              <option value="9">Октябрь</option>
-              <option value="10">Ноябрь</option>
-              <option value="11">Декабрь</option>
-            </select>
-          </div>
-
           <div class="chart-container glass-card">
             <h3>График по месяцам</h3>
             <div class="bar-chart" id="barChart">
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Янв</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Фев</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Мар</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Апр</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Май</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Июн</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Июл</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Авг</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Сен</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Окт</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Ноя</label>
-              </div>
-              <div class="bar-item">
-                <div class="bar-fill" style="height: 0%"></div>
-                <label>Дек</label>
-              </div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Янв</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Фев</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Мар</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Апр</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Май</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Июн</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Июл</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Авг</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Сен</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Окт</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Ноя</label></div>
+              <div class="bar-item"><div class="bar-fill" style="height: 0%"></div><label>Дек</label></div>
             </div>
           </div>
 
           <div class="detailed-report glass-card">
-            <h3>Детальный отчёт по месяцам</h3>
+            <h3>Детальный отчёт</h3>
             <table class="report-table">
               <thead>
                 <tr>
@@ -214,16 +158,15 @@
           </div>
         </section>
 
-        <!-- SETTINGS PANEL -->
         <section class="panel" id="settings">
           <div class="settings-group glass-card">
             <h3>Язык интерфейса</h3>
             <div class="language-selector">
-              <button class="lang-btn active" data-lang="ru">
+              <button class="lang-btn active" type="button" data-lang="ru">
                 <span class="flag">🇷🇺</span>
                 <span>Русский</span>
               </button>
-              <button class="lang-btn" data-lang="en">
+              <button class="lang-btn" type="button" data-lang="en">
                 <span class="flag">🇺🇸</span>
                 <span>English</span>
               </button>
@@ -233,8 +176,8 @@
           <div class="settings-group glass-card">
             <h3>Тема оформления</h3>
             <div class="theme-selector">
-              <button class="theme-btn active" data-theme="light">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
+              <button class="theme-btn active" type="button" data-theme="light">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="16" cy="16" r="5"></circle>
                   <line x1="16" y1="1" x2="16" y2="3"></line>
                   <line x1="16" y1="29" x2="16" y2="31"></line>
@@ -247,8 +190,8 @@
                 </svg>
                 <span>Светлая</span>
               </button>
-              <button class="theme-btn" data-theme="dark">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
+              <button class="theme-btn" type="button" data-theme="dark">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
                 <span>Тёмная</span>
@@ -259,20 +202,20 @@
           <div class="settings-group glass-card">
             <h3>О приложении</h3>
             <p>Shift Flow v1.0</p>
-            <p class="stat-subtext">Простое управление рабочими сменами и доходами</p>
+            <p class="stat-subtext">Простое управление сменами и доходами</p>
           </div>
         </section>
       </main>
 
       <nav class="bottom-nav">
-        <button class="nav-item active" data-panel="home" aria-label="Главная">
+        <button class="nav-item active" type="button" data-panel="home" aria-label="Главная">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
             <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
           <span>Главная</span>
         </button>
-        <button class="nav-item" data-panel="reports" aria-label="Отчёты">
+        <button class="nav-item" type="button" data-panel="reports" aria-label="Отчёты">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="12" y1="2" x2="12" y2="22"></line>
             <path d="M17 5H9.5a1.5 1.5 0 0 0-1.5 1.5v12a1.5 1.5 0 0 0 1.5 1.5H17"></path>
@@ -281,7 +224,7 @@
           </svg>
           <span>Отчёты</span>
         </button>
-        <button class="nav-item" data-panel="settings" aria-label="Настройки">
+        <button class="nav-item" type="button" data-panel="settings" aria-label="Настройки">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="3"></circle>
             <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.96 2.96l4.24 4.24M1 12h6m6 0h6m-1.78-7.78l-4.24 4.24m-2.96 2.96l-4.24 4.24"></path>
@@ -291,35 +234,40 @@
       </nav>
     </div>
 
-    <!-- MODAL FOR ADDING SHIFT -->
-    <div class="modal hidden" id="addShiftModal">
-      <div class="modal-content">
+    <div class="modal hidden" id="addShiftModal" aria-hidden="true">
+      <div class="modal-card glass-card">
         <div class="modal-header">
-          <h2>Добавить смену</h2>
-          <button class="close-btn" id="closeModalBtn">✕</button>
+          <h3>Добавить смену</h3>
+          <button class="close-btn" id="closeModalBtn" type="button" aria-label="Закрыть">✕</button>
         </div>
-        <form id="shiftForm">
-          <div class="form-group">
-            <label for="shiftDate">Дата:</label>
+
+        <form id="shiftForm" class="shift-form">
+          <label class="form-group">
+            <span class="label-text">Дата</span>
             <input type="date" id="shiftDate" required />
-          </div>
-          <div class="form-group">
-            <label for="shiftStart">Начало:</label>
+          </label>
+
+          <label class="form-group">
+            <span class="label-text">Начало</span>
             <input type="time" id="shiftStart" required />
-          </div>
-          <div class="form-group">
-            <label for="shiftEnd">Конец:</label>
+          </label>
+
+          <label class="form-group">
+            <span class="label-text">Конец</span>
             <input type="time" id="shiftEnd" required />
-          </div>
-          <div class="form-group">
-            <label for="shiftRate">Почасовая ставка (₽):</label>
-            <input type="number" id="shiftRate" min="0" step="50" />
-          </div>
-          <div class="form-group">
-            <label for="shiftDescription">Описание (опционально):</label>
-            <textarea id="shiftDescription" rows="3"></textarea>
-          </div>
-          <div class="form-actions">
+          </label>
+
+          <label class="form-group">
+            <span class="label-text">Почасовая ставка (₽)</span>
+            <input type="number" id="shiftRate" min="0" step="50" value="500" />
+          </label>
+
+          <label class="form-group">
+            <span class="label-text">Описание</span>
+            <textarea id="shiftDescription" rows="3" placeholder="Дополнительная информация..."></textarea>
+          </label>
+
+          <div class="form-buttons">
             <button type="submit" class="btn-primary">Сохранить</button>
             <button type="button" class="btn-secondary" id="cancelBtn">Отмена</button>
           </div>
