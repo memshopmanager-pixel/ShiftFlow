@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShiftFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar glass-card">
+        <div>
+          <p class="eyebrow">ShiftFlow</p>
+          <h1>Панель смен</h1>
+        </div>
+        <button class="icon-button" aria-label="Добавить смену">＋</button>
+      </header>
+
+      <nav class="tabs glass-card" aria-label="Навигация">
+        <button class="tab active" data-tab="calendar">Календарь</button>
+        <button class="tab" data-tab="reports">Отчёты</button>
+        <button class="tab" data-tab="settings">Настройки</button>
+      </nav>
+
+      <main class="content">
+        <section class="panel active" id="calendar">
+          <div class="calendar-header glass-card">
+            <button class="nav-date" id="prevMonth" aria-label="Предыдущий месяц">‹</button>
+            <div>
+              <p class="small-label">Месяц</p>
+              <h2 id="monthLabel">Сентябрь 2026</h2>
+            </div>
+            <button class="nav-date" id="nextMonth" aria-label="Следующий месяц">›</button>
+          </div>
+
+          <div class="calendar-grid glass-card">
+            <div class="weekdays">
+              <span>Пн</span>
+              <span>Вт</span>
+              <span>Ср</span>
+              <span>Чт</span>
+              <span>Пт</span>
+              <span>Сб</span>
+              <span>Вс</span>
+            </div>
+            <div class="days" id="calendarDays"></div>
+          </div>
+
+          <div class="shift-list glass-card">
+            <div class="section-head">
+              <h3>Смены</h3>
+              <button class="primary-button" id="addShiftButton">Добавить смену</button>
+            </div>
+            <div class="shift-items" id="shiftItems">
+              <div class="shift-item">
+                <div class="shift-time">08:00 — 16:00</div>
+                <div class="shift-meta">Алексей • Дневная смена</div>
+              </div>
+              <div class="shift-item alt">
+                <div class="shift-time">16:00 — 00:00</div>
+                <div class="shift-meta">Марина • Вечерняя смена</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="reports">
+          <div class="stats-grid">
+            <div class="stat-card glass-card">
+              <span class="stat-label">Рубли</span>
+              <strong>182 400 ₽</strong>
+              <small>+12.5% vs last month</small>
+            </div>
+            <div class="stat-card glass-card">
+              <span class="stat-label">Часы</span>
+              <strong>418 ч</strong>
+              <small>Норма в пределах</small>
+            </div>
+            <div class="stat-card glass-card">
+              <span class="stat-label">Смены</span>
+              <strong>38</strong>
+              <small>С этого месяца</small>
+            </div>
+          </div>
+
+          <div class="report-card glass-card">
+            <div class="section-head">
+              <h3>Отчёт по месяцам</h3>
+              <div class="chip-group">
+                <button class="chip active">Месяц</button>
+                <button class="chip">Год</button>
+              </div>
+            </div>
+            <div class="bar-chart" aria-label="График отчёта">
+              <div class="bar-group"><span class="bar" style="height: 44%"></span><label>Янв</label></div>
+              <div class="bar-group"><span class="bar" style="height: 58%"></span><label>Фев</label></div>
+              <div class="bar-group"><span class="bar" style="height: 72%"></span><label>Мар</label></div>
+              <div class="bar-group"><span class="bar" style="height: 81%"></span><label>Апр</label></div>
+              <div class="bar-group"><span class="bar" style="height: 66%"></span><label>Май</label></div>
+              <div class="bar-group"><span class="bar" style="height: 88%"></span><label>Июн</label></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="settings">
+          <div class="settings-card glass-card">
+            <h3>Выбор языка</h3>
+            <div class="flag-row">
+              <button class="flag-button active" aria-label="Русский">
+                <span>🇷🇺</span>
+                <small>Россия</small>
+              </button>
+              <button class="flag-button" aria-label="Английский">
+                <span>🇺🇸</span>
+                <small>Америка</small>
+              </button>
+            </div>
+          </div>
+
+          <div class="settings-card glass-card">
+            <h3>Режим оформления</h3>
+            <div class="theme-row">
+              <button class="theme-button active">Светлая</button>
+              <button class="theme-button">Тёмная</button>
+            </div>
+          </div>
+
+          <div class="settings-card glass-card agreement-box">
+            <h3>Пользовательское соглашение</h3>
+            <p>
+              Пользователь подтверждает, что настоящим принимает правила использования
+              приложения ShiftFlow, включая корректное использование календаря смен,
+              конфиденциальность данных, а также согласие на обработку информации,
+              необходимой для расчёта рабочего времени и отчётности.
+            </p>
+            <button class="primary-button wide">Согласен</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal hidden" id="shiftModal" aria-hidden="true">
+      <div class="modal-card glass-card">
+        <div class="modal-header">
+          <h3>Добавить смену</h3>
+          <button class="close-button" id="closeModal">×</button>
+        </div>
+
+        <form class="shift-form" id="shiftForm">
+          <label>
+            Дата
+            <input type="date" id="shiftDate" />
+          </label>
+          <label>
+            Сотрудник
+            <input type="text" value="Алексей" />
+          </label>
+          <label>
+            Время
+            <input type="text" value="08:00 — 16:00" />
+          </label>
+          <label>
+            Тип смены
+            <select>
+              <option>Дневная</option>
+              <option>Вечерняя</option>
+              <option>Ночная</option>
+            </select>
+          </label>
+          <button type="submit" class="primary-button wide">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
