@@ -1,23 +1,22 @@
-const tabs = document.querySelectorAll('.tab');
-const panels = document.querySelectorAll('.panel');
-const calendarDays = document.getElementById('calendarDays');
-const monthLabel = document.getElementById('monthLabel');
-const prevMonthBtn = document.getElementById('prevMonth');
-const nextMonthBtn = document.getElementById('nextMonth');
-const shiftModal = document.getElementById('shiftModal');
-const closeModalBtn = document.getElementById('closeModal');
-const addShiftButton = document.getElementById('addShiftButton');
-const shiftForm = document.getElementById('shiftForm');
-const shiftDate = document.getElementById('shiftDate');
-
 const today = new Date();
 let currentMonth = new Date(today.getFullYear(), today.getMonth(), 1);
 let selectedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
+// Initialize calendar
+const calendarDays = document.getElementById('calendarDays');
+const monthLabel = document.getElementById('monthLabel');
+const prevMonthBtn = document.getElementById('prevMonth');
+const nextMonthBtn = document.getElementById('nextMonth');
+
+function capitalizeMonth(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 function renderCalendar() {
   const year = currentMonth.getFullYear();
   const month = currentMonth.getMonth();
-  monthLabel.textContent = `${new Intl.DateTimeFormat('ru-RU', { month: 'long' }).format(currentMonth)} ${year}`;
+  const monthName = new Intl.DateTimeFormat('ru-RU', { month: 'long' }).format(currentMonth);
+  monthLabel.textContent = capitalizeMonth(monthName);
 
   const firstDayOfMonth = new Date(year, month, 1);
   const startDay = (firstDayOfMonth.getDay() + 6) % 7;
@@ -58,6 +57,7 @@ function renderCalendar() {
       selectedDate = date;
       shiftDate.value = date.toISOString().split('T')[0];
       renderCalendar();
+      openModal();
     });
 
     fragment.appendChild(cell);
@@ -77,15 +77,33 @@ function goToPrevMonth() {
   renderCalendar();
 }
 
-tabs.forEach((tab) => {
-  tab.addEventListener('click', () => {
-    tabs.forEach((t) => t.classList.toggle('active', t === tab));
-    panels.forEach((panel) => panel.classList.toggle('active', panel.id === tab.dataset.tab));
+prevMonthBtn.addEventListener('click', goToPrevMonth);
+nextMonthBtn.addEventListener('click', goToNextMonth);
+
+// Bottom navigation tabs
+const navBtns = document.querySelectorAll('.nav-btn');
+const panels = document.querySelectorAll('.panel');
+
+navBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const tabId = btn.getAttribute('data-tab');
+    
+    navBtns.forEach((b) => b.classList.remove('active'));
+    panels.forEach((p) => p.classList.remove('active'));
+    
+    btn.classList.add('active');
+    const targetPanel = document.getElementById(tabId);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+    }
   });
 });
 
-prevMonthBtn.addEventListener('click', goToPrevMonth);
-nextMonthBtn.addEventListener('click', goToNextMonth);
+// Shift modal
+const shiftModal = document.getElementById('shiftModal');
+const closeModalBtn = document.getElementById('closeModal');
+const shiftForm = document.getElementById('shiftForm');
+const shiftDate = document.getElementById('shiftDate');
 
 function openModal() {
   shiftModal.classList.remove('hidden');
@@ -97,7 +115,6 @@ function closeModal() {
   shiftModal.setAttribute('aria-hidden', 'true');
 }
 
-addShiftButton.addEventListener('click', openModal);
 closeModalBtn.addEventListener('click', closeModal);
 shiftModal.addEventListener('click', (event) => {
   if (event.target === shiftModal) closeModal();
@@ -106,29 +123,63 @@ shiftModal.addEventListener('click', (event) => {
 shiftForm.addEventListener('submit', (event) => {
   event.preventDefault();
   closeModal();
-  const item = document.createElement('div');
-  item.className = 'shift-item';
-  item.innerHTML = `
-    <div class="shift-time">08:00 — 16:00</div>
-    <div class="shift-meta">Новая смена • ${shiftDate.value}</div>
-  `;
-  document.getElementById('shiftItems').prepend(item);
 });
 
-renderCalendar();
-shiftDate.value = selectedDate.toISOString().split('T')[0];
+// Agreement modal
+const agreementBtn = document.getElementById('agreementBtn');
+const agreementModal = document.getElementById('agreementModal');
+const closeAgreementBtn = document.getElementById('closeAgreement');
+const agreeButton = document.getElementById('agreeButton');
 
-const themeButtons = document.querySelectorAll('.theme-button');
-const flagButtons = document.querySelectorAll('.flag-button');
+agreementBtn.addEventListener('click', () => {
+  agreementModal.classList.remove('hidden');
+  agreementModal.setAttribute('aria-hidden', 'false');
+});
 
+closeAgreementBtn.addEventListener('click', () => {
+  agreementModal.classList.add('hidden');
+  agreementModal.setAttribute('aria-hidden', 'true');
+});
+
+agreeButton.addEventListener('click', () => {
+  agreementModal.classList.add('hidden');
+  agreementModal.setAttribute('aria-hidden', 'true');
+});
+
+agreementModal.addEventListener('click', (event) => {
+  if (event.target === agreementModal) {
+    agreementModal.classList.add('hidden');
+    agreementModal.setAttribute('aria-hidden', 'true');
+  }
+});
+
+// Theme buttons
+const themeButtons = document.querySelectorAll('.theme-btn');
 themeButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    themeButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
+    themeButtons.forEach((btn) => btn.classList.remove('active'));
+    button.classList.add('active');
   });
 });
 
-flagButtons.forEach((button) => {
+// Language buttons
+const langButtons = document.querySelectorAll('.lang-btn');
+langButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    flagButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
+    langButtons.forEach((btn) => btn.classList.remove('active'));
+    button.classList.add('active');
   });
 });
+
+// Filter buttons
+const filterButtons = document.querySelectorAll('.filter-btn');
+filterButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    filterButtons.forEach((btn) => btn.classList.remove('active'));
+    button.classList.add('active');
+  });
+});
+
+// Initialize
+renderCalendar();
+shiftDate.value = selectedDate.toISOString().split('T')[0];
