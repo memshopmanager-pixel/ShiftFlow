@@ -255,23 +255,9 @@
           </div>
 
           <div class="settings-group glass-card">
-            <h3>Почасовая ставка</h3>
-            <div class="rate-input">
-              <input type="number" id="hourlyRate" min="0" step="50" placeholder="Введите ставку в ₽" />
-              <button id="saveRateBtn">Сохранить</button>
-            </div>
-            <p class="rate-hint">Текущая ставка: <strong id="currentRate">500 ₽/час</strong></p>
-          </div>
-
-          <div class="settings-group glass-card">
             <h3>О приложении</h3>
             <p>Shift Flow v1.0</p>
             <p class="stat-subtext">Простое управление рабочими сменами и доходами</p>
-          </div>
-
-          <div class="settings-group glass-card">
-            <h3>Пользовательское соглашение</h3>
-            <button id="termsBtn" class="terms-btn">Прочитать соглашение</button>
           </div>
         </section>
       </main>
@@ -282,7 +268,7 @@
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
             <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
-          <span id="homeLabel">Главная</span>
+          <span>Главная</span>
         </button>
         <button class="nav-item" data-panel="reports" aria-label="Отчёты">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -291,14 +277,14 @@
             <path d="M12 9v4"></path>
             <path d="M9 16h6"></path>
           </svg>
-          <span id="reportsLabel">Отчёты</span>
+          <span>Отчёты</span>
         </button>
         <button class="nav-item" data-panel="settings" aria-label="Настройки">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="3"></circle>
             <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.96 2.96l4.24 4.24M1 12h6m6 0h6m-1.78-7.78l-4.24 4.24m-2.96 2.96l-4.24 4.24"></path>
           </svg>
-          <span id="settingsLabel">Настройки</span>
+          <span>Настройки</span>
         </button>
       </nav>
     </div>
@@ -307,59 +293,35 @@
     <div class="modal" id="addShiftModal">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 id="modalTitle">Добавить смену</h2>
+          <h2>Добавить смену</h2>
           <button class="close-btn" id="closeModalBtn">✕</button>
         </div>
         <form id="shiftForm">
           <div class="form-group">
-            <label for="shiftDate" id="labelDate">Дата:</label>
+            <label for="shiftDate">Дата:</label>
             <input type="date" id="shiftDate" required />
           </div>
           <div class="form-group">
-            <label for="shiftStart" id="labelStart">Начало:</label>
+            <label for="shiftStart">Начало:</label>
             <input type="time" id="shiftStart" required />
           </div>
           <div class="form-group">
-            <label for="shiftEnd" id="labelEnd">Конец:</label>
+            <label for="shiftEnd">Конец:</label>
             <input type="time" id="shiftEnd" required />
           </div>
           <div class="form-group">
-            <label for="shiftRate" id="labelRate">Почасовая ставка (₽):</label>
+            <label for="shiftRate">Почасовая ставка (₽):</label>
             <input type="number" id="shiftRate" min="0" step="50" />
           </div>
           <div class="form-group">
-            <label for="shiftDescription" id="labelDescription">Описание (опционально):</label>
+            <label for="shiftDescription">Описание (опционально):</label>
             <textarea id="shiftDescription" rows="3"></textarea>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn-primary" id="submitBtn">Сохранить</button>
+            <button type="submit" class="btn-primary">Сохранить</button>
             <button type="button" class="btn-secondary" id="cancelBtn">Отмена</button>
           </div>
         </form>
-      </div>
-    </div>
-
-    <!-- MODAL FOR TERMS -->
-    <div class="modal" id="termsModal">
-      <div class="modal-content terms-content">
-        <div class="modal-header">
-          <h2 id="termsTitle">Пользовательское соглашение</h2>
-          <button class="close-btn" id="closeTermsBtn">✕</button>
-        </div>
-        <div class="terms-text" id="termsText">
-          <p><strong>1. Описание сервиса</strong></p>
-          <p>Shift Flow - это веб-приложение для управления рабочими сменами и отслеживания доходов. Приложение предоставляется "как есть" без каких-либо гарантий.</p>
-          
-          <p><strong>2. Использование данных</strong></p>
-          <p>Все ваши данные о сменах хранятся локально в браузере. Мы не передаём информацию на серверы и не используем её в коммерческих целях.</p>
-          
-          <p><strong>3. Ответственность</strong></p>
-          <p>Разработчик не несёт ответственность за потерю данных, сбои в работе приложения или неточности в расчётах. Пользователь использует приложение на свой риск.</p>
-          
-          <p><strong>4. Изменения в соглашении</strong></p>
-          <p>Мы оставляем право изменять это соглашение в любое время. Продолжение использования приложения означает согласие с новыми условиями.</p>
-        </div>
-        <button class="btn-primary" id="acceptTermsBtn">Я согласен</button>
       </div>
     </div>
 
