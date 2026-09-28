@@ -90,14 +90,6 @@
               </div>
             </div>
           </div>
-
-          <div class="selected-day-shifts glass-card">
-            <div class="section-header">
-              <h3 id="selectedDayTitle">Выберите дату</h3>
-              <button class="add-shift-btn" id="addShiftButton">+ Смена</button>
-            </div>
-            <div class="shifts-list" id="shiftsListHome"></div>
-          </div>
         </section>
 
         <!-- REPORTS PANEL -->
@@ -128,6 +120,24 @@
             </div>
           </div>
 
+          <div class="monthly-selector glass-card">
+            <label for="monthSelect">Выберите месяц:</label>
+            <select id="monthSelect">
+              <option value="0">Январь</option>
+              <option value="1">Февраль</option>
+              <option value="2">Март</option>
+              <option value="3">Апрель</option>
+              <option value="4">Май</option>
+              <option value="5">Июнь</option>
+              <option value="6">Июль</option>
+              <option value="7">Август</option>
+              <option value="8" selected>Сентябрь</option>
+              <option value="9">Октябрь</option>
+              <option value="10">Ноябрь</option>
+              <option value="11">Декабрь</option>
+            </select>
+          </div>
+
           <div class="chart-container glass-card">
             <h3>График по месяцам</h3>
             <div class="bar-chart" id="barChart">
@@ -155,11 +165,35 @@
                 <div class="bar-fill" style="height: 0%"></div>
                 <label>Июн</label>
               </div>
+              <div class="bar-item">
+                <div class="bar-fill" style="height: 0%"></div>
+                <label>Июл</label>
+              </div>
+              <div class="bar-item">
+                <div class="bar-fill" style="height: 0%"></div>
+                <label>Авг</label>
+              </div>
+              <div class="bar-item">
+                <div class="bar-fill" style="height: 0%"></div>
+                <label>Сен</label>
+              </div>
+              <div class="bar-item">
+                <div class="bar-fill" style="height: 0%"></div>
+                <label>Окт</label>
+              </div>
+              <div class="bar-item">
+                <div class="bar-fill" style="height: 0%"></div>
+                <label>Ноя</label>
+              </div>
+              <div class="bar-item">
+                <div class="bar-fill" style="height: 0%"></div>
+                <label>Дек</label>
+              </div>
             </div>
           </div>
 
           <div class="detailed-report glass-card">
-            <h3>Детальный отчёт</h3>
+            <h3>Детальный отчёт по месяцам</h3>
             <table class="report-table">
               <thead>
                 <tr>
@@ -185,9 +219,11 @@
             <div class="language-selector">
               <button class="lang-btn active" data-lang="ru">
                 <span class="flag">🇷🇺</span>
+                <span>Русский</span>
               </button>
               <button class="lang-btn" data-lang="en">
                 <span class="flag">🇺🇸</span>
+                <span>English</span>
               </button>
             </div>
           </div>
@@ -195,26 +231,17 @@
           <div class="settings-group glass-card">
             <h3>Тема оформления</h3>
             <div class="theme-selector">
-              <button class="theme-btn active" data-theme="system">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="3" width="28" height="22" rx="2"></rect>
-                  <line x1="2" y1="28" x2="30" y2="28"></line>
-                  <line x1="8" y1="28" x2="8" y2="30"></line>
-                  <line x1="24" y1="28" x2="24" y2="30"></line>
-                </svg>
-                <span>Система</span>
-              </button>
-              <button class="theme-btn" data-theme="light">
+              <button class="theme-btn active" data-theme="light">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="16" cy="16" r="5"></circle>
                   <line x1="16" y1="1" x2="16" y2="3"></line>
                   <line x1="16" y1="29" x2="16" y2="31"></line>
                   <line x1="31" y1="16" x2="29" y2="16"></line>
                   <line x1="3" y1="16" x2="1" y2="16"></line>
-                  <line x1="26.5" y1="5.5" x2="25" y2="4"></line>
-                  <line x1="7" y1="25" x2="5.5" y2="26.5"></line>
-                  <line x1="26.5" y1="26.5" x2="25" y2="25"></line>
-                  <line x1="7" y1="7" x2="5.5" y2="5.5"></line>
+                  <line x1="26.6" y1="5.4" x2="25.2" y2="4"></line>
+                  <line x1="6.8" y1="25.2" x2="5.4" y2="26.6"></line>
+                  <line x1="26.6" y1="26.6" x2="25.2" y2="25.2"></line>
+                  <line x1="6.8" y1="6.8" x2="5.4" y2="5.4"></line>
                 </svg>
                 <span>Светлая</span>
               </button>
@@ -228,110 +255,111 @@
           </div>
 
           <div class="settings-group glass-card">
-            <button class="agreement-btn" id="agreementBtn">
-              <span>📋</span>
-              Пользовательское соглашение
-            </button>
+            <h3>Почасовая ставка</h3>
+            <div class="rate-input">
+              <input type="number" id="hourlyRate" min="0" step="50" placeholder="Введите ставку в ₽" />
+              <button id="saveRateBtn">Сохранить</button>
+            </div>
+            <p class="rate-hint">Текущая ставка: <strong id="currentRate">500 ₽/час</strong></p>
           </div>
 
-          <div class="app-info">
+          <div class="settings-group glass-card">
+            <h3>О приложении</h3>
             <p>Shift Flow v1.0</p>
-            <p class="tagline-footer">Планируй • Контролируй • Работай</p>
+            <p class="stat-subtext">Простое управление рабочими сменами и доходами</p>
+          </div>
+
+          <div class="settings-group glass-card">
+            <h3>Пользовательское соглашение</h3>
+            <button id="termsBtn" class="terms-btn">Прочитать соглашение</button>
           </div>
         </section>
       </main>
 
-      <nav class="bottom-nav glass-card">
-        <button class="nav-btn active" data-tab="home">
+      <nav class="bottom-nav">
+        <button class="nav-item active" data-panel="home" aria-label="Главная">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
             <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
-          <span>Главная</span>
+          <span id="homeLabel">Главная</span>
         </button>
-        <button class="nav-btn" data-tab="reports">
+        <button class="nav-item" data-panel="reports" aria-label="Отчёты">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="12" y1="2" x2="12" y2="22"></line>
             <path d="M17 5H9.5a1.5 1.5 0 0 0-1.5 1.5v12a1.5 1.5 0 0 0 1.5 1.5H17"></path>
-            <path d="M6 12h12"></path>
+            <path d="M12 9v4"></path>
+            <path d="M9 16h6"></path>
           </svg>
-          <span>Отчёты</span>
+          <span id="reportsLabel">Отчёты</span>
         </button>
-        <button class="nav-btn" data-tab="settings">
+        <button class="nav-item" data-panel="settings" aria-label="Настройки">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="3"></circle>
-            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h6m-17.78 7.78l4.24-4.24m5.08-5.08l4.24-4.24"></path>
+            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.96 2.96l4.24 4.24M1 12h6m6 0h6m-1.78-7.78l-4.24 4.24m-2.96 2.96l-4.24 4.24"></path>
           </svg>
-          <span>Настройки</span>
+          <span id="settingsLabel">Настройки</span>
         </button>
       </nav>
     </div>
 
-    <!-- Shift Modal -->
-    <div class="modal hidden" id="shiftModal" aria-hidden="true">
-      <div class="modal-card glass-card">
+    <!-- MODAL FOR ADDING SHIFT -->
+    <div class="modal" id="addShiftModal">
+      <div class="modal-content">
         <div class="modal-header">
-          <h3>Добавить смену</h3>
-          <button class="close-btn" id="closeModal">✕</button>
+          <h2 id="modalTitle">Добавить смену</h2>
+          <button class="close-btn" id="closeModalBtn">✕</button>
         </div>
-        <form class="shift-form" id="shiftForm">
-          <label class="form-group">
-            <span class="label-text">Дата</span>
+        <form id="shiftForm">
+          <div class="form-group">
+            <label for="shiftDate" id="labelDate">Дата:</label>
             <input type="date" id="shiftDate" required />
-          </label>
-          <label class="form-group">
-            <span class="label-text">Наименование работы</span>
-            <input type="text" id="shiftName" placeholder="Например: Кассир, Охрана..." required />
-          </label>
-          <label class="form-group">
-            <span class="label-text">Количество часов</span>
-            <input type="number" id="shiftHours" placeholder="8" min="0.5" step="0.5" required />
-          </label>
-          <label class="form-group">
-            <span class="label-text">Доход за смену</span>
-            <input type="number" id="shiftIncome" placeholder="0" min="0" step="50" required />
-          </label>
-          <label class="form-group">
-            <span class="label-text">Категория (выберите цвет)</span>
-            <div class="color-picker">
-              <button type="button" class="color-dot" data-color="red" title="Красная" style="background: #ff7d7d;"></button>
-              <button type="button" class="color-dot" data-color="blue" title="Синяя" style="background: #78a9ff;"></button>
-              <button type="button" class="color-dot" data-color="green" title="Зелёная" style="background: #64e4b2;"></button>
-              <button type="button" class="color-dot" data-color="purple" title="Фиолетовая" style="background: #a48cff;"></button>
-              <button type="button" class="color-dot" data-color="orange" title="Оранжевая" style="background: #ffc979;"></button>
-            </div>
-            <input type="hidden" id="shiftColor" value="blue" />
-          </label>
-          <label class="form-group">
-            <span class="label-text">Комментарий</span>
-            <textarea id="shiftComment" placeholder="Дополнительная информация..."></textarea>
-          </label>
-          <div class="form-buttons">
-            <button type="submit" class="btn-primary">Сохранить</button>
-            <button type="button" class="btn-secondary" id="setHolidayBtn">Выходной</button>
+          </div>
+          <div class="form-group">
+            <label for="shiftStart" id="labelStart">Начало:</label>
+            <input type="time" id="shiftStart" required />
+          </div>
+          <div class="form-group">
+            <label for="shiftEnd" id="labelEnd">Конец:</label>
+            <input type="time" id="shiftEnd" required />
+          </div>
+          <div class="form-group">
+            <label for="shiftRate" id="labelRate">Почасовая ставка (₽):</label>
+            <input type="number" id="shiftRate" min="0" step="50" />
+          </div>
+          <div class="form-group">
+            <label for="shiftDescription" id="labelDescription">Описание (опционально):</label>
+            <textarea id="shiftDescription" rows="3"></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary" id="submitBtn">Сохранить</button>
+            <button type="button" class="btn-secondary" id="cancelBtn">Отмена</button>
           </div>
         </form>
       </div>
     </div>
 
-    <!-- Agreement Modal -->
-    <div class="modal hidden" id="agreementModal" aria-hidden="true">
-      <div class="modal-card glass-card agreement-modal">
+    <!-- MODAL FOR TERMS -->
+    <div class="modal" id="termsModal">
+      <div class="modal-content terms-content">
         <div class="modal-header">
-          <h3>Пользовательское соглашение</h3>
-          <button class="close-btn" id="closeAgreement">✕</button>
+          <h2 id="termsTitle">Пользовательское соглашение</h2>
+          <button class="close-btn" id="closeTermsBtn">✕</button>
         </div>
-        <div class="agreement-content">
-          <h4>Shift Flow - Управление сменами</h4>
-          <p>Пользователь подтверждает, что ознакомился и принимает все условия использования приложения Shift Flow.</p>
-          <h5>1. Общие положения</h5>
-          <p>Shift Flow предоставляет инструменты для управления графиком работы, отслеживания часов и расчёта заработной платы.</p>
-          <h5>2. Конфиденциальность данных</h5>
-          <p>Все данные о сменах и заработной плате хранятся локально на вашем устройстве.</p>
-          <h5>3. Использование приложения</h5>
-          <p>Пользователь обязуется использовать приложение в соответствии с действующим законодательством.</p>
+        <div class="terms-text" id="termsText">
+          <p><strong>1. Описание сервиса</strong></p>
+          <p>Shift Flow - это веб-приложение для управления рабочими сменами и отслеживания доходов. Приложение предоставляется "как есть" без каких-либо гарантий.</p>
+          
+          <p><strong>2. Использование данных</strong></p>
+          <p>Все ваши данные о сменах хранятся локально в браузере. Мы не передаём информацию на серверы и не используем её в коммерческих целях.</p>
+          
+          <p><strong>3. Ответственность</strong></p>
+          <p>Разработчик не несёт ответственность за потерю данных, сбои в работе приложения или неточности в расчётах. Пользователь использует приложение на свой риск.</p>
+          
+          <p><strong>4. Изменения в соглашении</strong></p>
+          <p>Мы оставляем право изменять это соглашение в любое время. Продолжение использования приложения означает согласие с новыми условиями.</p>
         </div>
-        <button class="btn-primary wide" id="agreeButton">Я согласен</button>
+        <button class="btn-primary" id="acceptTermsBtn">Я согласен</button>
       </div>
     </div>
 
