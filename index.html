@@ -34,6 +34,7 @@
       </header>
 
       <main class="content">
+        <!-- HOME PANEL -->
         <section class="panel active" id="home">
           <div class="calendar-container glass-card">
             <div class="calendar-nav">
@@ -89,8 +90,17 @@
               </div>
             </div>
           </div>
+
+          <div class="selected-day-shifts glass-card">
+            <div class="section-header">
+              <h3 id="selectedDayTitle">Выберите дату</h3>
+              <button class="add-shift-btn" id="addShiftButton">+ Смена</button>
+            </div>
+            <div class="shifts-list" id="shiftsListHome"></div>
+          </div>
         </section>
 
+        <!-- REPORTS PANEL -->
         <section class="panel" id="reports">
           <div class="reports-header glass-card">
             <h2>Отчёты</h2>
@@ -103,17 +113,17 @@
           <div class="stats-cards">
             <div class="big-stat glass-card">
               <p class="stat-label">Всего часов</p>
-              <h3 class="big-number" id="totalHours">418</h3>
+              <h3 class="big-number" id="totalHours">0</h3>
               <p class="stat-subtext">часов отработано</p>
             </div>
             <div class="big-stat glass-card accent-stat">
               <p class="stat-label">Заработано</p>
-              <h3 class="big-number" id="totalEarnings">182,400</h3>
+              <h3 class="big-number" id="totalEarnings">0</h3>
               <p class="stat-subtext">₽ за период</p>
             </div>
             <div class="big-stat glass-card">
               <p class="stat-label">Смен</p>
-              <h3 class="big-number" id="totalShifts">38</h3>
+              <h3 class="big-number" id="totalShifts">0</h3>
               <p class="stat-subtext">рабочих смен</p>
             </div>
           </div>
@@ -122,34 +132,28 @@
             <h3>График по месяцам</h3>
             <div class="bar-chart" id="barChart">
               <div class="bar-item">
-                <div class="bar-fill" style="height: 44%"></div>
+                <div class="bar-fill" style="height: 0%"></div>
                 <label>Янв</label>
-                <span class="bar-value">183</span>
               </div>
               <div class="bar-item">
-                <div class="bar-fill" style="height: 58%"></div>
+                <div class="bar-fill" style="height: 0%"></div>
                 <label>Фев</label>
-                <span class="bar-value">241</span>
               </div>
               <div class="bar-item">
-                <div class="bar-fill" style="height: 72%"></div>
+                <div class="bar-fill" style="height: 0%"></div>
                 <label>Мар</label>
-                <span class="bar-value">299</span>
               </div>
               <div class="bar-item">
-                <div class="bar-fill" style="height: 81%"></div>
+                <div class="bar-fill" style="height: 0%"></div>
                 <label>Апр</label>
-                <span class="bar-value">336</span>
               </div>
               <div class="bar-item">
-                <div class="bar-fill" style="height: 66%"></div>
+                <div class="bar-fill" style="height: 0%"></div>
                 <label>Май</label>
-                <span class="bar-value">273</span>
               </div>
               <div class="bar-item">
-                <div class="bar-fill" style="height: 88%"></div>
+                <div class="bar-fill" style="height: 0%"></div>
                 <label>Июн</label>
-                <span class="bar-value">365</span>
               </div>
             </div>
           </div>
@@ -165,59 +169,25 @@
                   <th>Заработок</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="reportTableBody">
                 <tr>
-                  <td>Январь</td>
-                  <td>183 ч</td>
-                  <td>23</td>
-                  <td>55,200 ₽</td>
-                </tr>
-                <tr>
-                  <td>Февраль</td>
-                  <td>241 ч</td>
-                  <td>30</td>
-                  <td>72,300 ₽</td>
-                </tr>
-                <tr>
-                  <td>Март</td>
-                  <td>299 ч</td>
-                  <td>37</td>
-                  <td>89,700 ₽</td>
-                </tr>
-                <tr>
-                  <td>Апрель</td>
-                  <td>336 ч</td>
-                  <td>42</td>
-                  <td>100,800 ₽</td>
-                </tr>
-                <tr>
-                  <td>Май</td>
-                  <td>273 ч</td>
-                  <td>34</td>
-                  <td>81,900 ₽</td>
-                </tr>
-                <tr>
-                  <td>Июнь</td>
-                  <td>365 ч</td>
-                  <td>46</td>
-                  <td>109,500 ₽</td>
+                  <td colspan="4" style="text-align: center; color: var(--muted);">Нет данных</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
+        <!-- SETTINGS PANEL -->
         <section class="panel" id="settings">
           <div class="settings-group glass-card">
             <h3>Язык интерфейса</h3>
             <div class="language-selector">
               <button class="lang-btn active" data-lang="ru">
                 <span class="flag">🇷🇺</span>
-                <span class="lang-name">Русский</span>
               </button>
               <button class="lang-btn" data-lang="en">
                 <span class="flag">🇺🇸</span>
-                <span class="lang-name">English</span>
               </button>
             </div>
           </div>
@@ -225,7 +195,16 @@
           <div class="settings-group glass-card">
             <h3>Тема оформления</h3>
             <div class="theme-selector">
-              <button class="theme-btn active" data-theme="light">
+              <button class="theme-btn active" data-theme="system">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="28" height="22" rx="2"></rect>
+                  <line x1="2" y1="28" x2="30" y2="28"></line>
+                  <line x1="8" y1="28" x2="8" y2="30"></line>
+                  <line x1="24" y1="28" x2="24" y2="30"></line>
+                </svg>
+                <span>Система</span>
+              </button>
+              <button class="theme-btn" data-theme="light">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="16" cy="16" r="5"></circle>
                   <line x1="16" y1="1" x2="16" y2="3"></line>
@@ -244,15 +223,6 @@
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
                 <span>Тёмная</span>
-              </button>
-              <button class="theme-btn" data-theme="system">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="3" width="28" height="22" rx="2"></rect>
-                  <line x1="2" y1="28" x2="30" y2="28"></line>
-                  <line x1="8" y1="28" x2="8" y2="30"></line>
-                  <line x1="24" y1="28" x2="24" y2="30"></line>
-                </svg>
-                <span>Система</span>
               </button>
             </div>
           </div>
@@ -297,6 +267,7 @@
       </nav>
     </div>
 
+    <!-- Shift Modal -->
     <div class="modal hidden" id="shiftModal" aria-hidden="true">
       <div class="modal-card glass-card">
         <div class="modal-header">
@@ -309,31 +280,41 @@
             <input type="date" id="shiftDate" required />
           </label>
           <label class="form-group">
-            <span class="label-text">Время начала</span>
-            <input type="time" id="shiftStart" required />
+            <span class="label-text">Наименование работы</span>
+            <input type="text" id="shiftName" placeholder="Например: Кассир, Охрана..." required />
           </label>
           <label class="form-group">
-            <span class="label-text">Время окончания</span>
-            <input type="time" id="shiftEnd" required />
+            <span class="label-text">Количество часов</span>
+            <input type="number" id="shiftHours" placeholder="8" min="0.5" step="0.5" required />
           </label>
           <label class="form-group">
-            <span class="label-text">Тип смены</span>
-            <select id="shiftType" required>
-              <option>Дневная</option>
-              <option>Вечерняя</option>
-              <option>Ночная</option>
-              <option>Полная</option>
-            </select>
+            <span class="label-text">Доход за смену</span>
+            <input type="number" id="shiftIncome" placeholder="0" min="0" step="50" required />
+          </label>
+          <label class="form-group">
+            <span class="label-text">Категория (выберите цвет)</span>
+            <div class="color-picker">
+              <button type="button" class="color-dot" data-color="red" title="Красная" style="background: #ff7d7d;"></button>
+              <button type="button" class="color-dot" data-color="blue" title="Синяя" style="background: #78a9ff;"></button>
+              <button type="button" class="color-dot" data-color="green" title="Зелёная" style="background: #64e4b2;"></button>
+              <button type="button" class="color-dot" data-color="purple" title="Фиолетовая" style="background: #a48cff;"></button>
+              <button type="button" class="color-dot" data-color="orange" title="Оранжевая" style="background: #ffc979;"></button>
+            </div>
+            <input type="hidden" id="shiftColor" value="blue" />
           </label>
           <label class="form-group">
             <span class="label-text">Комментарий</span>
             <textarea id="shiftComment" placeholder="Дополнительная информация..."></textarea>
           </label>
-          <button type="submit" class="btn-primary wide">Сохранить смену</button>
+          <div class="form-buttons">
+            <button type="submit" class="btn-primary">Сохранить</button>
+            <button type="button" class="btn-secondary" id="setHolidayBtn">Выходной</button>
+          </div>
         </form>
       </div>
     </div>
 
+    <!-- Agreement Modal -->
     <div class="modal hidden" id="agreementModal" aria-hidden="true">
       <div class="modal-card glass-card agreement-modal">
         <div class="modal-header">
@@ -342,30 +323,13 @@
         </div>
         <div class="agreement-content">
           <h4>Shift Flow - Управление сменами</h4>
-          <p>
-            Пользователь подтверждает, что ознакомился и принимает все условия использования приложения Shift Flow.
-          </p>
+          <p>Пользователь подтверждает, что ознакомился и принимает все условия использования приложения Shift Flow.</p>
           <h5>1. Общие положения</h5>
-          <p>
-            Shift Flow предоставляет инструменты для управления графиком работы, отслеживания часов и расчёта заработной платы. Приложение разработано для личного использования и управления рабочим временем.
-          </p>
+          <p>Shift Flow предоставляет инструменты для управления графиком работы, отслеживания часов и расчёта заработной платы.</p>
           <h5>2. Конфиденциальность данных</h5>
-          <p>
-            Все данные о сменах и заработной плате хранятся локально на вашем устройстве и не передаются третьим лицам без вашего согласия.
-          </p>
+          <p>Все данные о сменах и заработной плате хранятся локально на вашем устройстве.</p>
           <h5>3. Использование приложения</h5>
-          <p>
-            Пользователь обязуется использовать приложение в соответствии с действующим законодательством и не использовать его для целей, противоречащих законам своей страны.
-          </p>
-          <h5>4. Ответственность</h5>
-          <p>
-            Разработчик Shift Flow не несёт ответственность за потерю данных, ошибки в расчётах или любые убытки, связанные с использованием приложения.
-          </p>
-          <h5>5. Изменения условий</h5>
-          <p>
-            Разработчик оставляет за собой право изменять условия этого соглашения. Пользователь будет уведомлен об изменениях при следующем использовании приложения.
-          </p>
-          <p style="margin-top: 20px; font-weight: 600;">Нажимая "Я согласен", вы принимаете все условия этого соглашения.</p>
+          <p>Пользователь обязуется использовать приложение в соответствии с действующим законодательством.</p>
         </div>
         <button class="btn-primary wide" id="agreeButton">Я согласен</button>
       </div>
